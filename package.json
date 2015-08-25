@@ -4,7 +4,7 @@
   "description": "Prints the value at a path from JSON-formatted environment variable",
   "main": "index.js",
   "scripts": {
-    "env_map_sgl": "./bin/env_map_sgl"
+    "env_map_sgl": "./bin/env_map_print"
   },
   "repository": {
     "type": "git",
