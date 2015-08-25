@@ -1,6 +1,6 @@
 {
   "name": "env-map",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Prints the value at a path from JSON-formatted environment variable",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jupiter/env-map/issues"
   },
-  "homepage": "https://github.com/jupiter/env-map"
+  "homepage": "https://github.com/jupiter/env-map",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  }
 }
