@@ -1,0 +1,19 @@
+{
+  "name": "env-map",
+  "version": "0.1.0",
+  "description": "Prints the value at a path from JSON-formatted environment variable",
+  "main": "index.js",
+  "scripts": {
+    "env_map_sgl": "./bin/env_map_sgl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jupiter/env-map.git"
+  },
+  "author": "Pieter Raubenheimer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jupiter/env-map/issues"
+  },
+  "homepage": "https://github.com/jupiter/env-map"
+}

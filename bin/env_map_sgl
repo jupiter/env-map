@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+var env = process.env;
+var argv = require('minimist')(process.argv.slice(2), {
+  alias: {
+    s: 'source',
+    p: 'path',
+    d: 'default'
+  }
+});
+var obj = JSON.parse(env[argv.source]);
+console.log(getNested(obj, argv.path, argv.default));
+
+function getNested(obj, path, defaultValue) {
+  if (_isUndefined(obj) || obj === null) return defaultValue;
+
+  var fields = path.split('.');
+  var result = obj;
+  for (var i = 0, n = fields.length; i < n; i++) {
+      if (!_isObject(result) && !Array.isArray(result)) {
+        return (!_isUndefined(defaultValue)) ? defaultValue : undefined;
+      }
+
+      result = _getValue(result, fields[i]);
+  }
+  return (_isUndefined(result) && !_isUndefined(defaultValue)) ? defaultValue : result;
+}
+
+function _isUndefined(value) {
+  return value === undefined;
+}
+
+function _isObject(value) {
+  var type = typeof value;
+  return !!value && (type == 'object' || type == 'function');
+}
+
+function _getValue(obj, key) {
+  if (obj[key]) return obj[key];
+  if (key[key.length - 1] !== '*') return;
+
+  var startMatch = key.slice(0, -1);
+  var matchingKey;
+
+  Object.keys(obj).forEach(function(key) {
+    if (key.indexOf(startMatch) !== 0) return;
+    matchingKey = key;
+  });
+  return obj[matchingKey];
+}
